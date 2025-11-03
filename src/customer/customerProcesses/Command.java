@@ -1,6 +1,8 @@
 package customer.customerProcesses;
 
+import java.io.IOException;
+
 public interface Command {
     String commandName();
-    void process();
+    void process() throws IOException;
 }

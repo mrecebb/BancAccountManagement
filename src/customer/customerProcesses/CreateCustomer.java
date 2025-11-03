@@ -7,6 +7,7 @@ import notification.Email;
 import notification.Notification;
 import notification.Phone;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,7 +27,7 @@ public class CreateCustomer implements Command {
     }
 
     @Override
-    public void process() {
+    public void process() throws IOException {
         Scanner input = new Scanner(System.in);
 
         // name information
@@ -104,6 +105,7 @@ public class CreateCustomer implements Command {
 
         Customer newCustomer = database.addCustomer(name, surname, age, cart, phone, email, addNotification);
         newCustomer.getNotification().createdNotification(newCustomer);
+        new CustomerFile(newCustomer);
     }
 
     private boolean checkText(String name) {

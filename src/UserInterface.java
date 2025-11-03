@@ -1,5 +1,6 @@
 import customer.customerProcesses.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ public class UserInterface {
 
     ArrayList<Command> commands = new ArrayList<>();
 
-    public UserInterface() {
+    public UserInterface() throws IOException {
         commands.add(new CreateCustomer());
         commands.add(new SearchCustomer());
         commands.add(new PrintCustomer());
@@ -16,7 +17,7 @@ public class UserInterface {
         commands.add(new CardToCard());
     }
 
-    public void startProgram() {
+    public void startProgram() throws IOException {
         while (true) {
             for (int i = 0; i < commands.size(); i++) {
                 System.out.println((i+1)+ ". " + commands.get(i).commandName());
