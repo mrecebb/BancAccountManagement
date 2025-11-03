@@ -2,6 +2,7 @@ package customer.customerProcesses;
 
 import customer.Customer;
 import customer.CustomerDatabase;
+import exteption.InvalidAge;
 import notification.Email;
 import notification.Notification;
 import notification.Phone;
@@ -43,6 +44,14 @@ public class CreateCustomer implements Command {
         while (checkText(surname)) {
             System.out.print("Please enter a valid surname(5-16 characters and only symbol): ");
             surname = input.nextLine();
+        }
+        System.out.println("\n");
+
+        System.out.print("Please enter your age: ");
+        int age = input.nextInt();
+
+        if (!checkAge(age)) {
+            throw new InvalidAge("your age must be greater than 18"); // exception atdim
         }
         System.out.println("\n");
 
@@ -93,7 +102,7 @@ public class CreateCustomer implements Command {
 
         Notification addNotification = notifications.get(choice - 1);
 
-        Customer newCustomer = database.addCustomer(name, surname, cart, phone, email, addNotification);
+        Customer newCustomer = database.addCustomer(name, surname, age, cart, phone, email, addNotification);
         newCustomer.getNotification().createdNotification(newCustomer);
     }
 
@@ -107,6 +116,13 @@ public class CreateCustomer implements Command {
         }
         return (name.length() <= 2 || name.length() >= 16) || hasDigit;
     }
+
+    private boolean checkAge(int age) {
+        return age >= 18;
+    }
+
+
+
 
     private boolean checkCardNumber(String cardNumber) {
         boolean hasCharacter = false;

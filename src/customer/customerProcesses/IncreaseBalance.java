@@ -27,7 +27,7 @@ public class IncreaseBalance implements Command {
 
                 if (customer.getId() == id) {
                     found = true;
-                    System.out.println("Name: " + customer.getName() + "\nSurname: " + customer.getSurname());
+                    System.out.println("Name: " + customer.getName() + "\nSurname: " + customer.getSurname() + "\nYour Balance: " +  customer.getBalance());
                     System.out.print("Increase Balance: ");
                     double amount = input.nextDouble();
                     customer.setBalance(customer.getBalance() + amount);

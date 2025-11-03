@@ -5,21 +5,22 @@ import notification.Notification;
 import java.util.ArrayList;
 
 public class CustomerDatabase {
-    private static final ArrayList<Customer> customers = new ArrayList<Customer>();
+    private static final ArrayList<Customer> customers = new ArrayList<>();
 
-    public Customer addCustomer(String name, String surname, String cardNumber, String phone, String email, Notification notification) {
+    public Customer addCustomer(String name, String surname, int age, String cardNumber, String phone, String email, Notification notification) {
         Customer customer = new Customer();
 
         customer.setId();
         customer.setName(name);
         customer.setSurname(surname);
+        customer.setAge(age);
         customer.setCartNumber(cardNumber);
         customer.setPhoneNumber(phone);
         customer.setEmail(email);
         customer.setBalance(0);
         customer.setNotification(notification);
 
-        customers.add(customer);
+        addCustomer(customer);
 
         return customer;
     }

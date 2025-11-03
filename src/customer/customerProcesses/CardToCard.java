@@ -2,6 +2,7 @@ package customer.customerProcesses;
 
 import customer.Customer;
 import customer.CustomerDatabase;
+import exteption.HaveNotEnoughMoney;
 
 import java.util.Scanner;
 
@@ -34,7 +35,7 @@ public class CardToCard implements Command {
             }
 
             else {
-                System.out.println("You don't have enough money!");
+                throw new HaveNotEnoughMoney("you want to send " + amount + " manat, but you have " + database.getCustomer(senderID).getBalance() + " manat");
             }
         }
 

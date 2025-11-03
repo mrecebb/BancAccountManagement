@@ -7,6 +7,7 @@ public class Customer {
     private static int counter = 0;
     private String name;
     private String surname;
+    private int age;
     private String cartNumber;
     private double balance;
     private String phoneNumber;
@@ -19,6 +20,7 @@ public class Customer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", age=" + age +
                 ", cartNumber='" + cartNumber + '\'' +
                 ", balance=" + balance +
                 ", phoneNumber='" + phoneNumber + '\'' +
@@ -49,6 +51,14 @@ public class Customer {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getCartNumber() {
